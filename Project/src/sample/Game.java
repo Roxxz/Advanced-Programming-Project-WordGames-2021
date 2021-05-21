@@ -1,5 +1,6 @@
 package sample;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -8,15 +9,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class Game {
-    private static final int MAX_WRONG_GUESSES = 7;
+    public static final int MAX_WRONG_GUESSES = 7;
     private RandomWordFinder randomWordFinder;
     private String randomWord;
-
     private List<Character> wrongLetters;
-    private int wrongGuesses;
+    private List<Character> correctLetters;
+    public static int wrongGuesses;
 
     Game() {
         wrongLetters = new ArrayList<>();
+        correctLetters = new ArrayList<>();
         wrongGuesses = 0;
         try {
             randomWordFinder = new RandomWordFinder();
@@ -38,7 +40,7 @@ public class Game {
     String getCurrentWord(){
         String currentWord = "";
         for (char c : randomWord.toCharArray()) {
-            if (wrongLetters.contains(c)) {
+            if (correctLetters.contains(c)) {
                 currentWord += c + " ";
             } else {
                 currentWord += "_ ";
@@ -60,37 +62,29 @@ public class Game {
         return missingChars;
     }
 
-    String getWord() {
-        String word = "";
-        for (char c : randomWord.toCharArray()) {
-            word += c + " ";
-        }
-        return word;
-    }
-
     void reset() {
         wrongGuesses = 0;
         wrongLetters.clear();
+        correctLetters.clear();
         setNewRandomWord();
     }
 
-    int getWrongGuesses() {
-        return wrongGuesses;
-    }
-
-    boolean addChar(char ch) {
+    boolean makeMove(char ch) {
         boolean wrongGuess = false;
         if ((!wrongLetters.stream().anyMatch(i -> i.equals(ch)))) {
-            wrongLetters.add(ch);
             if (!randomWord.contains(String.valueOf(ch))) {
+                wrongLetters.add(ch);
                 wrongGuess = true;
                 wrongGuesses++;
+            }
+            else{
+                correctLetters.add(ch);
             }
         }
         return wrongGuess;
     }
 
-    List<Character> getEnteredChars() {
+    List<Character> getWrongLetters() {
         return Collections.unmodifiableList(wrongLetters);
     }
 
@@ -100,10 +94,11 @@ public class Game {
 
     boolean isGameWon() {
         for (char c : randomWord.toCharArray()) {
-            if (!wrongLetters.contains(c)) {
+            if (!correctLetters.contains(c)) {
                 return false;
             }
         }
+
         return true;
     }
 }

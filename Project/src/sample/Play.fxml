@@ -23,7 +23,7 @@
             <Font name="Bookman Old Style" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="idWrongLetter" layoutX="16.0" layoutY="381.0" prefHeight="18.0" prefWidth="657.0">
+      <Label fx:id="idWrongLetter" layoutX="16.0" layoutY="381.0" prefHeight="18.0" prefWidth="657.0" text="_">
          <font>
             <Font name="Bookman Old Style" size="23.0" />
          </font>
@@ -38,11 +38,6 @@
             <TextField fx:id="idLetterInserted" prefHeight="18.0" prefWidth="116.0" />
          </children>
       </HBox>
-      <Button fx:id="idGoBackBtn" layoutX="577.0" layoutY="435.0" mnemonicParsing="false" onAction="#goBackButtonClicked" text="Înapoi">
-         <font>
-            <Font name="Bookman Old Style" size="18.0" />
-         </font>
-      </Button>
       <HBox layoutX="14.0" layoutY="67.0" prefHeight="30.0" prefWidth="226.0" spacing="10.0">
          <children>
             <Label text="Încercări rămase:">
@@ -62,12 +57,12 @@
       </HBox>
       <HBox layoutX="14.0" layoutY="32.0" nodeOrientation="LEFT_TO_RIGHT" spacing="5.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="54.0" text="Nivel: ">
+            <Label prefHeight="27.0" prefWidth="54.0" text="Scor: ">
                <font>
                   <Font name="Bookman Old Style" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="idLevel" prefHeight="9.0" prefWidth="36.0" text="1">
+            <Label fx:id="idScore" prefHeight="9.0" prefWidth="36.0" text="0">
                <font>
                   <Font size="17.0" />
                </font>
@@ -84,11 +79,11 @@
                   <Font name="Bookman Old Style" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="idGetDef" mnemonicParsing="false" prefHeight="30.0" prefWidth="63.0" text="Definitie">
+            <Button fx:id="idGetDef" mnemonicParsing="false" onAction="#getDefButtonClicked" prefHeight="30.0" prefWidth="63.0" text="Definitie">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Button>
-            <Button fx:id="idGetSyn" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" text="Sinonime">
+            <Button fx:id="idGetSyn" mnemonicParsing="false" onAction="#getSynButtonClicked" prefHeight="30.0" prefWidth="73.0" text="Sinonime">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Button>
@@ -106,5 +101,11 @@
             </ImageView>
          </children>
       </VBox>
+      <HBox layoutX="519.0" layoutY="438.0" prefHeight="42.0" prefWidth="154.0" spacing="30.0">
+         <children>
+            <Button fx:id="idNextBtn" mnemonicParsing="false" onAction="#nextButtonClicked" prefHeight="30.0" prefWidth="73.0" text="Înainte" />
+            <Button fx:id="idGoBackBtn" mnemonicParsing="false" onAction="#goBackButtonClicked" prefHeight="30.0" prefWidth="73.0" text="Înapoi" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

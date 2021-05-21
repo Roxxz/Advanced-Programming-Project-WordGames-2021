@@ -30,12 +30,12 @@
                   <Insets left="245.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="idLevels" mnemonicParsing="false" onAction="#levelsButtonClicked" text="Nivele">
+            <Button fx:id="idScores" mnemonicParsing="false" onAction="#scoresButtonClicked" text="Scor">
                <font>
                   <Font name="Bookman Old Style" size="24.0" />
                </font>
                <VBox.margin>
-                  <Insets left="240.0" top="10.0" />
+                  <Insets left="250.0" top="10.0" />
                </VBox.margin>
             </Button>
             <Button fx:id="idQuit" mnemonicParsing="false" onAction="#quitButtonClicked" text="Stop">

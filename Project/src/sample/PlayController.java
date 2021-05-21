@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -10,22 +9,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
+
+import static sample.Game.*;
 
 public class PlayController implements Initializable {
     private Game game;
+    private int score=0;
+    private int lives = 7;
 
     @FXML
-    private javafx.scene.control.Label idLevel;
+    private javafx.scene.control.Label idScore;
     @FXML
     private javafx.scene.control.Label idLivesLeft;
     @FXML
@@ -38,45 +39,61 @@ public class PlayController implements Initializable {
     private javafx.scene.control.Button idGoBackBtn;
     @FXML
     private javafx.scene.image.ImageView idPicture;
+    @FXML
+    private javafx.scene.control.Button idNextBtn;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.game = new Game();
-        idWrongLetter.setText("");
-        int lives = 7;
+        this.score = 0;
+        System.out.println("Initializing game...");
+        idWrongLetter.setText("_");
         idLivesLeft.setText(String.valueOf(lives));
+        draw(0);
+        idNextBtn.setDisable(true);
+        startTextFieldListening();
 
-        idLetterInserted.textProperty().addListener((observableValue, oldValue, newValue) -> {
-            if("".equalsIgnoreCase(newValue)){
-                return;
-            }
-            char ch = newValue.charAt(0);
+    }
 
-            if (game.addChar(ch)) {
-                // update picture
-                int wrongGuesses = game.getWrongGuesses();
-                idLivesLeft.setText(String.valueOf(lives - 1));
-                draw(wrongGuesses);
+    private void startTextFieldListening(){
+        idLetterInserted.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
+                if(newValue.length() > 0)
+                {
+                        boolean rightMove = game.makeMove(newValue.toLowerCase().charAt(0));
+                        if (rightMove) {
+                            lives--;
+                            idLivesLeft.setText(String.valueOf(lives));
+                            updateWrongLetters();
+                        }
+                    draw(wrongGuesses);
+                    updateWord();
+                    checkGameOver();
+                    idLetterInserted.clear();
+                }
             }
-            idLetterInserted.clear();
-            updateEnteredChars();
-            updateWord();
-            checkGameOver();
         });
-
         updateWord();
     }
 
     private void checkGameOver() {
         if (game.isGameWon()) {
             // Return game won message
-            disableGame();
+            lives = 7;
             draw(9);
+            setScore(10);
+            idLivesLeft.setText(String.valueOf(lives));
+            idLetterInserted.setDisable(true);
+            idWordToFind.setText("");
+            idWrongLetter.setText("");
+            idNextBtn.setDisable(false);
+            idNextBtn.setOnAction(this::nextButtonClicked);
 
         } else if (game.isGameOver()) {
             // Return game over message
-            disableGame();
+            idLetterInserted.setDisable(true);
             draw(8);
             drawCorrectWord();
         }
@@ -121,18 +138,19 @@ public class PlayController implements Initializable {
         idWordToFind.setText(game.getMissingChars());
     }
 
-    private void disableGame() {
-        idLetterInserted.setDisable(true);
-    }
-
     private void updateWord() {
         idWordToFind.setText(game.getCurrentWord());
     }
 
-    private void updateEnteredChars() {
+    private void updateWrongLetters() {
         StringBuilder enteredFormatted = new StringBuilder();
-        game.getEnteredChars().stream().sorted().forEach(i -> enteredFormatted.append(i).append(","));
+        game.getWrongLetters().stream().sorted().forEach(i -> enteredFormatted.append(i).append(","));
         idWrongLetter.setText(enteredFormatted.toString().substring(0, enteredFormatted.length() - 1));
+    }
+
+    private void setScore(int points){
+        this.score += points;
+        idScore.setText(String.valueOf(this.score));
     }
 
     public void goBackButtonClicked(ActionEvent actionEvent) throws IOException {
@@ -143,4 +161,32 @@ public class PlayController implements Initializable {
         window.show();
     }
 
+    public void getDefButtonClicked(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Hint");
+        alert.setHeaderText("Definition:");
+        alert.setContentText("something something something");
+
+        alert.showAndWait();
+    }
+
+    public void getSynButtonClicked(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Hint");
+        alert.setHeaderText("Synonyms:");
+        alert.setContentText("something something something");
+
+        alert.showAndWait();
+    }
+
+    public void nextButtonClicked(ActionEvent actionEvent) {
+        try {
+            game.reset();
+            idLetterInserted.setDisable(false);
+            updateWord();
+            draw(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
