@@ -15,19 +15,19 @@
                 <Image url="@../pics/title.png" />
             </image>
             <BorderPane.margin>
-                <Insets top="50.0" />
+                <Insets top="70.0" />
             </BorderPane.margin>
         </ImageView>
     </top>
     <center>
-        <VBox fx:id="idWelcome" prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+        <VBox fx:id="idWelcome" prefHeight="500.0" prefWidth="700.0" stylesheets="@StyleSheet.css" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="idPlay" mnemonicParsing="false" onAction="#playButtonClicked" text="Start" textAlignment="CENTER">
                     <font>
                         <Font name="Bookman Old Style" size="24.0" />
                     </font>
                     <VBox.margin>
-                        <Insets left="245.0" />
+                        <Insets left="230.0" />
                     </VBox.margin>
                 </Button>
                 <Button fx:id="idScores" mnemonicParsing="false" onAction="#scoresButtonClicked" text="Scor">
@@ -35,12 +35,12 @@
                         <Font name="Bookman Old Style" size="24.0" />
                     </font>
                     <VBox.margin>
-                        <Insets left="250.0" top="10.0" />
+                        <Insets left="230.0" top="10.0" />
                     </VBox.margin>
                 </Button>
                 <Button fx:id="idQuit" mnemonicParsing="false" onAction="#quitButtonClicked" text="Stop">
                     <VBox.margin>
-                        <Insets left="250.0" top="10.0" />
+                        <Insets left="230.0" top="10.0" />
                     </VBox.margin>
                     <font>
                         <Font name="Bookman Old Style" size="24.0" />
@@ -48,7 +48,7 @@
                 </Button>
             </children>
             <BorderPane.margin>
-                <Insets left="20.0" top="90.0" />
+                <Insets left="20.0" top="70.0" />
             </BorderPane.margin>
             <padding>
                 <Insets left="30.0" />

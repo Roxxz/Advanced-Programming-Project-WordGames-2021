@@ -21,7 +21,7 @@ public class WelcomeController {
 
 
     public void playButtonClicked(ActionEvent actionEvent) throws IOException {
-        Parent playViewParent = FXMLLoader.load(getClass().getResource("Play.fxml"));
+        Parent playViewParent = FXMLLoader.load(getClass().getResource("chooseGame.fxml"));
         Scene playScene = new Scene(playViewParent);
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(playScene);

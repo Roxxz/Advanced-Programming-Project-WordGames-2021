@@ -25,7 +25,7 @@ import static sample.Game.*;
 public class PlayController implements Initializable {
     private Game game;
     private int score=0;
-    private int lives = 7;
+    private int lives = 8;
 
     @FXML
     private javafx.scene.control.Label idScore;

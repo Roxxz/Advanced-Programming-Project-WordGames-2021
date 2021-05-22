@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: c2f7ec;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PlayController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: c2f7ec;" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PlayController">
     <children>
         <Label fx:id="idWordToFind" layoutX="16.0" layoutY="120.0" prefHeight="58.0" prefWidth="358.0" text="_ _ _ _ _ _ _ _ _">
             <font>
@@ -62,7 +62,7 @@
                         <Font name="Bookman Old Style" size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="idScore" prefHeight="9.0" prefWidth="36.0" text="0">
+                <Label fx:id="idScore" prefHeight="26.0" prefWidth="12.0" text="0">
                     <font>
                         <Font size="17.0" />
                     </font>
@@ -70,26 +70,31 @@
                         <Insets />
                     </HBox.margin>
                 </Label>
+            <Label prefHeight="26.0" prefWidth="22.0" text="\$">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             </children>
         </HBox>
-        <HBox layoutX="16.0" layoutY="435.0" prefHeight="49.0" prefWidth="328.0" spacing="20.0">
+        <HBox layoutX="16.0" layoutY="624.0" prefHeight="58.0" prefWidth="558.0" spacing="10.0">
             <children>
-                <Label prefHeight="36.0" prefWidth="61.0" text="Indicii:">
+                <Label prefHeight="62.0" prefWidth="62.0" text="Indicii:">
                     <font>
                         <Font name="Bookman Old Style" size="18.0" />
                     </font>
                 </Label>
-                <Button fx:id="idGetDef" mnemonicParsing="false" onAction="#getDefButtonClicked" prefHeight="30.0" prefWidth="63.0" text="Definitie">
+                <Button id="idDefButton" fx:id="idGetDef" mnemonicParsing="false" onAction="#getDefButtonClicked" prefHeight="30.0" prefWidth="63.0" text="Definitie 10$">
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin></Button>
-                <Button fx:id="idGetSyn" mnemonicParsing="false" onAction="#getSynButtonClicked" prefHeight="30.0" prefWidth="73.0" text="Sinonime">
+                <Button id="idSynButton" fx:id="idGetSyn" mnemonicParsing="false" onAction="#getSynButtonClicked" prefHeight="38.0" prefWidth="194.0" stylesheets="@StyleSheet.css" text="Sinonime 15$">
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin></Button>
             </children>
         </HBox>
-        <VBox fx:id="idVBox" layoutX="404.0" layoutY="14.0" prefHeight="293.0" prefWidth="296.0">
+        <VBox fx:id="idVBox" layoutX="542.0" layoutY="51.0" prefHeight="346.0" prefWidth="328.0">
             <children>
                 <ImageView fx:id="idPicture" fitHeight="263.0" fitWidth="234.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -101,7 +106,7 @@
                 </ImageView>
             </children>
         </VBox>
-        <HBox layoutX="519.0" layoutY="438.0" prefHeight="42.0" prefWidth="154.0" spacing="30.0">
+        <HBox layoutX="634.0" layoutY="624.0" prefHeight="42.0" prefWidth="251.0" spacing="30.0">
             <children>
                 <Button fx:id="idNextBtn" mnemonicParsing="false" onAction="#nextButtonClicked" prefHeight="30.0" prefWidth="73.0" text="Înainte" />
                 <Button fx:id="idGoBackBtn" mnemonicParsing="false" onAction="#goBackButtonClicked" prefHeight="30.0" prefWidth="73.0" text="Înapoi" />

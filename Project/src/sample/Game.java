@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Game {
-    public static final int MAX_WRONG_GUESSES = 7;
+    public static final int MAX_WRONG_GUESSES = 8;
     private RandomWordFinder randomWordFinder;
     private String randomWord;
     private List<Character> wrongLetters;
