@@ -1,3 +1,15 @@
+.bodybg{
+    -fx-background-image: url("../pics/gif.gif");
+    -fx-background-size: 100% 100%;
+}
+.body2bg{
+    -fx-background-image: url("../pics/backgr1.jpg");
+    -fx-background-size: 100% 100%;
+}
+.alltext{
+    -fx-text-fill: #f8c202;
+    -fx-effect: innershadow( three-pass-box , rgb(255, 234, 106), 6, 0.0 , 0 , 2 );
+}
 .button {
     -fx-background-color:
             linear-gradient(#ffd65b, #e68400),
@@ -15,6 +27,11 @@
     -fx-pref-height: 50px;
 }
 
+.hangSpot{;
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+}
+
 #idSynButton{
     -fx-pref-width: 170px;
 }
@@ -23,4 +40,7 @@
 }
 #idBeginnerButton{
     -fx-pref-width: 150px;
+}
+.idTitle{
+    -fx-pref-width: 500%;
 }

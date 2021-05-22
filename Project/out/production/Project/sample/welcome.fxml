@@ -8,17 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: c2f7ec;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.WelcomeController">
-    <top>
-        <ImageView pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-            <image>
-                <Image url="@../pics/title.png" />
-            </image>
-            <BorderPane.margin>
-                <Insets top="70.0" />
-            </BorderPane.margin>
-        </ImageView>
-    </top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="bodybg" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.WelcomeController">
     <center>
         <VBox fx:id="idWelcome" prefHeight="500.0" prefWidth="700.0" stylesheets="@StyleSheet.css" BorderPane.alignment="CENTER">
             <children>
@@ -55,4 +45,14 @@
             </padding>
         </VBox>
     </center>
+   <top>
+      <ImageView fitWidth="600.0" pickOnBounds="true" preserveRatio="true" styleClass="idTitle" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../pics/newTitle.png" />
+         </image>
+         <BorderPane.margin>
+            <Insets bottom="-70.0" top="-30.0" />
+         </BorderPane.margin>
+      </ImageView>
+   </top>
 </BorderPane>

@@ -24,7 +24,7 @@ import static sample.Game.*;
 
 public class PlayController implements Initializable  {
     Game game;
-    private int score=0;
+    private int score = 0;
     private int lives = 8;
 
     @FXML
@@ -87,7 +87,7 @@ public class PlayController implements Initializable  {
     private void checkGameOver() throws IOException {
         if (game.isGameWon()) {
             // Return game won message
-            lives = 7;
+            lives = 8;
             draw(9);
             setScore(10);
             idLivesLeft.setText(String.valueOf(lives));
@@ -159,8 +159,8 @@ public class PlayController implements Initializable  {
     }
 
     private void setScore(int points){
-        this.score += points;
-        idScore.setText(String.valueOf(this.score));
+        this.score = this.getScore() + points;
+        idScore.setText(String.valueOf(this.getScore()));
     }
 
     public void goBackButtonClicked(ActionEvent actionEvent) throws IOException {
@@ -185,7 +185,7 @@ public class PlayController implements Initializable  {
             text = text.substring(0, Math.min(text.length(), 1000));
             text = text + "...";
         }
-        if(this.score >= 10){
+        if(this.getScore() >= 10){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Hint");
             alert.setHeaderText("Definitie pentru cuvantul dat: ");
@@ -216,7 +216,7 @@ public class PlayController implements Initializable  {
             builder.append(" ");
         }
         String text = builder.toString();
-        if(this.score < 15){
+        if(this.getScore() < 15){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Atentie");
             alert.setHeaderText("Nu aveti suficiente puncte. ");
@@ -247,5 +247,9 @@ public class PlayController implements Initializable  {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public int getScore() {
+        return score;
     }
 }
