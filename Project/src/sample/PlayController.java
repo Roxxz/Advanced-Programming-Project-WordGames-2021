@@ -17,14 +17,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import static sample.Game.*;
+import static sample.ScoresController.*;
 
 public class PlayController implements Initializable  {
     Game game;
-    private int score = 0;
+    public static int score = 0;
     private int lives = 8;
 
     @FXML
@@ -102,6 +105,9 @@ public class PlayController implements Initializable  {
             idLetterInserted.setDisable(true);
             draw(8);
             drawCorrectWord();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH-mm-ss");
+            Date date = new Date();
+            scoresList.put(dateFormat.format(date), score);
             String word = this.game.getRandomWord();
             DexSearch dexSearch = new DexSearch();
             dexSearch.findWord(word);

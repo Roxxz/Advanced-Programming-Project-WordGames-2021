@@ -40,4 +40,7 @@ public class WelcomeController {
         Stage stage = (Stage) idQuit.getScene().getWindow();
         stage.close();
     }
+
+    public void podiumButtonClicked(ActionEvent actionEvent) {
+    }
 }
