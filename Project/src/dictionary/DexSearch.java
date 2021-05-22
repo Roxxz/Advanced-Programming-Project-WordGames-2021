@@ -1,11 +1,14 @@
 package dictionary;
 
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.net.URI;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,8 +22,10 @@ public class DexSearch {
     private final static String COLON_SYMBOL = ":";
     private final static String WORD_NOT_FOUND = "rezultate (0)";
     private ArrayList<String> definition = new ArrayList<>();
+    String wordToSearch;
 
     public ArrayList<String> findWord(String word) throws IOException {
+        this.wordToSearch = word;
         Document doc = Jsoup.connect("https://dexonline.ro/definitie/" +word).get();
         Element step = doc.body();
         String output = step.select("div.defWrapper").text();
@@ -52,7 +57,10 @@ public class DexSearch {
             System.out.println("\n");
         }
         return definition;
-
-
     }
+    public void openPage() throws IOException {
+        java.awt.Desktop.getDesktop().browse(URI.create("https://dexonline.ro/definitie/" + wordToSearch));
+    }
+
 }
+

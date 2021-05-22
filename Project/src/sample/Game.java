@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import static sample.ChooseGameController.typeOfGame;
 
 public class Game {
     public static final int MAX_WRONG_GUESSES = 8;
@@ -25,12 +26,26 @@ public class Game {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        setNewRandomWord();
+        setNewRandomWord(typeOfGame);
+
     }
 
-    private void setNewRandomWord() {
+    private void setNewRandomWord(int type) {
         try {
-            randomWord = randomWordFinder.getRandomWord();
+            switch (type){
+                case 1:
+                    randomWord = randomWordFinder.getRandomWord(4);
+                    break;
+                case 2:
+                    randomWord = randomWordFinder.getRandomWord(6);
+                    break;
+                case 3:
+                    randomWord = randomWordFinder.getRandomWord(8);
+                    break;
+                default:
+                    System.out.println("Something went wrong with finding a random numer.");
+            }
+
             System.out.println("Random word: " + randomWord);
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +81,7 @@ public class Game {
         wrongGuesses = 0;
         wrongLetters.clear();
         correctLetters.clear();
-        setNewRandomWord();
+        setNewRandomWord(typeOfGame);
     }
 
     boolean makeMove(char ch) {
@@ -105,4 +120,6 @@ public class Game {
     public String getRandomWord() {
         return randomWord;
     }
+
+
 }

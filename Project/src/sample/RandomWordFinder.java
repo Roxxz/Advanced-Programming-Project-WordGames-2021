@@ -24,10 +24,10 @@ public class RandomWordFinder{
         }
     }
 
-    public String getRandomWord() {
+    public String getRandomWord(int limit) {
         if (words.isEmpty()) return "NO-DATA";
         String random =  words.get((int)(Math.random()*words.size()));
-        while(random.length() > 8){
+        while(random.length() > limit || random.length() < (limit - 2)){
             random =  words.get((int)(Math.random()*words.size()));
         }
         return random;

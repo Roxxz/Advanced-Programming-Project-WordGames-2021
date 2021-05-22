@@ -22,8 +22,8 @@ import java.util.ResourceBundle;
 
 import static sample.Game.*;
 
-public class PlayController implements Initializable {
-    private Game game;
+public class PlayController implements Initializable  {
+    Game game;
     private int score=0;
     private int lives = 8;
 
@@ -72,7 +72,11 @@ public class PlayController implements Initializable {
                     }
                     draw(wrongGuesses);
                     updateWord();
-                    checkGameOver();
+                    try {
+                        checkGameOver();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     idLetterInserted.clear();
                 }
             }
@@ -80,7 +84,7 @@ public class PlayController implements Initializable {
         updateWord();
     }
 
-    private void checkGameOver() {
+    private void checkGameOver() throws IOException {
         if (game.isGameWon()) {
             // Return game won message
             lives = 7;
@@ -98,6 +102,10 @@ public class PlayController implements Initializable {
             idLetterInserted.setDisable(true);
             draw(8);
             drawCorrectWord();
+            String word = this.game.getRandomWord();
+            DexSearch dexSearch = new DexSearch();
+            dexSearch.findWord(word);
+            dexSearch.openPage();
         }
     }
 
@@ -167,6 +175,16 @@ public class PlayController implements Initializable {
         String word = this.game.getRandomWord();
         DexSearch dexSearch = new DexSearch();
         ArrayList<String> definition = dexSearch.findWord(word);
+        StringBuilder builder = new StringBuilder();
+        for (String value : definition) {
+            builder.append(value);
+            builder.append(" ");
+        }
+        String text = builder.toString();
+        if(text.length() > 1000){
+            text = text.substring(0, Math.min(text.length(), 1000));
+            text = text + "...";
+        }
         if(this.score >= 10){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Hint");
@@ -175,7 +193,7 @@ public class PlayController implements Initializable {
                 alert.setContentText("Nu s-a gasit definitie pentru acest cuvant.");
             }
             else{
-                alert.setContentText(String.valueOf(definition));
+                alert.setContentText(text);
                 setScore(-10);
             }
             alert.showAndWait();
@@ -192,6 +210,12 @@ public class PlayController implements Initializable {
         String word = this.game.getRandomWord();
         SynonymSearch synonymSearch = new SynonymSearch();
         ArrayList<String> synonyms = synonymSearch.findSynonym(word);
+        StringBuilder builder = new StringBuilder();
+        for (String value : synonyms) {
+            builder.append(value);
+            builder.append(" ");
+        }
+        String text = builder.toString();
         if(this.score < 15){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Atentie");
@@ -205,7 +229,7 @@ public class PlayController implements Initializable {
             if(synonyms.size() == 0){
                 alert.setContentText("Acest cuvant nu are sinonim.");
             } else{
-                alert.setContentText(String.valueOf(synonyms));
+                alert.setContentText(String.valueOf(text));
                 setScore(-15);
             }
 
@@ -217,6 +241,7 @@ public class PlayController implements Initializable {
         try {
             game.reset();
             idLetterInserted.setDisable(false);
+            idNextBtn.setDisable(true);
             updateWord();
             draw(0);
         } catch (Exception e) {
