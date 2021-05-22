@@ -2,7 +2,7 @@
 
 Specificatii:
 
--Crearea unor servicii pentru implementarea unor jocuri cu cuvinte (Scrabblesau altele) pentru limba română
+-Crearea unor servicii pentru implementarea unor jocuri cu cuvinte (Scrabble sau altele) pentru limba română
 
 -Serviciile pot fi: gestionarea unor dictionare, anagrame, accesarea unor servicii pentru obtinerea definitilor, sinonimelor (Dex), suport pentru anumitejocuri, etc.
 
