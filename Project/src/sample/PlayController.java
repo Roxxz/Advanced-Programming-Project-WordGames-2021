@@ -1,5 +1,6 @@
 package sample;
 
+import db.Database;
 import dictionary.DexSearch;
 import dictionary.SynonymSearch;
 import javafx.beans.value.ChangeListener;
@@ -17,18 +18,22 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 import static sample.Game.*;
+import static sample.NameController.playersName;
 import static sample.ScoresController.*;
 
 public class PlayController implements Initializable  {
     Game game;
     public static int score = 0;
     private int lives = 8;
+    static Connection connection;
 
     @FXML
     private javafx.scene.control.Label idScore;
@@ -108,6 +113,9 @@ public class PlayController implements Initializable  {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH-mm-ss");
             Date date = new Date();
             scoresList.put(dateFormat.format(date), score);
+            int score = getScore();
+            DBController dbController = new DBController();
+            dbController.updateHighScore(playersName, score);
             String word = this.game.getRandomWord();
             DexSearch dexSearch = new DexSearch();
             dexSearch.findWord(word);

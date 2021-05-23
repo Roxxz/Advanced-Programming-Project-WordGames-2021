@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PodiumController">
+   <children>
+      <BorderPane prefHeight="500.0" prefWidth="700.0" styleClass="body2bg" stylesheets="@StyleSheet.css">
+         <padding>
+            <Insets bottom="-70.0" top="-30.0" />
+         </padding>
+         <top>
+            <ImageView fitWidth="600.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="-70.0" top="-30.0" />
+               </BorderPane.margin>
+               <image>
+                  <Image url="@../pics/newTitle.png" />
+               </image>
+            </ImageView>
+         </top>
+         <bottom>
+            <ImageView fitHeight="250.0" fitWidth="2000.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../pics/podium.png" />
+               </image>
+               <BorderPane.margin>
+                  <Insets bottom="100.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </bottom>
+         <left>
+            <Label fx:id="secondPlaceLabel" prefHeight="22.0" prefWidth="123.0" styleClass="alltext" text="_ _ _ _ _ _ _ _ _ _" textFill="WHITE" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets bottom="-190.0" left="110.0" />
+               </BorderPane.margin>
+            </Label>
+         </left>
+         <right>
+            <Label fx:id="thirdPlaceLabel" styleClass="alltext" text="_ _ _ _ _ _ _ _ _ _" textFill="WHITE" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Baskerville Old Face" size="18.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets bottom="-280.0" right="110.0" />
+               </BorderPane.margin>
+            </Label>
+         </right>
+         <center>
+            <Label fx:id="firstPlaceLabel" styleClass="alltext" text="_ _ _ _ _ _ _ _ _ _" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets bottom="-100.0" right="-20.0" />
+               </BorderPane.margin>
+            </Label>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
