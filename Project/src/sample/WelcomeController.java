@@ -41,6 +41,11 @@ public class WelcomeController {
         stage.close();
     }
 
-    public void podiumButtonClicked(ActionEvent actionEvent) {
+    public void podiumButtonClicked(ActionEvent actionEvent) throws IOException {
+        Parent scoresViewParent = FXMLLoader.load(getClass().getResource("podium.fxml"));
+        Scene scoresScene = new Scene(scoresViewParent);
+        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scoresScene);
+        window.show();
     }
 }

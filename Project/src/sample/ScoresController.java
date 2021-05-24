@@ -65,19 +65,14 @@ public class ScoresController implements Initializable {
     }
 
     private void showScoresList() {
-        Map<String, Integer> reverseSortedMap = new HashMap<>();
-        scoresList.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
-        scoresList.clear();
-        for(String date: reverseSortedMap.keySet()){
+
+        for(String date: scoresList.keySet()){
             idHourList.appendText("\n" + date);
         }
-        for(Integer score: reverseSortedMap.values()){
+        for(Integer score: scoresList.values()){
             idScoreList.appendText("\n" + score);
         }
-
+        scoresList.clear();
     }
 
     @FXML

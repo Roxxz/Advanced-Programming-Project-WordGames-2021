@@ -1,9 +1,16 @@
 package sample;
 
 import db.Database;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
@@ -24,10 +31,17 @@ public class PodiumController implements Initializable {
 
         @FXML
         private Label firstPlaceLabel;
+
+        @FXML
+        private Button goBackBtn;
+
+
         DBController dbController = new DBController();
         TreeMap<Integer, String> topThree = dbController.getTopThree();
         int score = 0;
         String name = null;
+
+
         public void initialize(URL url, ResourceBundle resourceBundle) {
                 while(!topThree.isEmpty()){
                         switch(topThree.size()){
@@ -62,5 +76,11 @@ public class PodiumController implements Initializable {
                 thirdPlaceLabel.setText(name+" (" + score + ")");
         }
 
-
+        public void goBackButtonClicked(ActionEvent actionEvent) throws IOException {
+                Parent scoresViewParent = FXMLLoader.load(getClass().getResource("welcome.fxml"));
+                Scene scoresScene = new Scene(scoresViewParent);
+                Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                window.setScene(scoresScene);
+                window.show();
+        }
 }
