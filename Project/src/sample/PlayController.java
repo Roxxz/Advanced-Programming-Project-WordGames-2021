@@ -33,7 +33,6 @@ public class PlayController implements Initializable  {
     Game game;
     public static int score = 0;
     private int lives = 8;
-    static Connection connection;
 
     @FXML
     private javafx.scene.control.Label idScore;
@@ -115,7 +114,9 @@ public class PlayController implements Initializable  {
             scoresList.put(dateFormat.format(date), score);
             int score = getScore();
             DBController dbController = new DBController();
-            dbController.updateHighScore(playersName, score);
+            if(score > dbController.getHighScore(playersName)){
+                dbController.updateHighScore(playersName, score);
+            }
             String word = this.game.getRandomWord();
             DexSearch dexSearch = new DexSearch();
             dexSearch.findWord(word);

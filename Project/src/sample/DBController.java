@@ -41,6 +41,45 @@ public class DBController {
             System.out.println(exception.getMessage());
         }
     }
+    public boolean checkIfExists(String name){
+        int number = 0;
+        try {
+            String query = "select count(*) as total from highscores where user_name = (?);";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, name);
+            preparedStatement.execute();
+            ResultSet resultSet = preparedStatement.getResultSet();
+            while(resultSet.next()){
+                number = resultSet.getInt("total");
+            }
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        if(number == 0){
+            return false;
+        }
+        return true;
+    }
+    public int getHighScore(String name){
+        int highscore = 0;
+        try {
+            String query = "select highscore from highscores where user_name = ?;";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, name);
+            preparedStatement.execute();
+
+            ResultSet resultSet = preparedStatement.getResultSet();
+            while(resultSet.next()){
+                highscore = resultSet.getInt("highscore");
+            }
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return highscore;
+    }
+
     public void updateHighScore(String name, int score){
         try {
             String query = "update highscores set highscore = (?) where user_name = (?);";

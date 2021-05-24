@@ -7,16 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import javafx.scene.input.InputMethodEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.util.Optional;
 
 
 public class NameController {
@@ -39,12 +37,36 @@ public class NameController {
             alert.showAndWait();
         }else{
             DBController dbController = new DBController();
-            dbController.insertNewPlayer(playersName);
-            Parent playViewParent = FXMLLoader.load(getClass().getResource("welcome.fxml"));
-            Scene playScene = new Scene(playViewParent);
-            Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(playScene);
-            window.show();
+            if(dbController.checkIfExists(playersName)){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Acest nume este deja folosit.");
+                alert.setContentText("Scorul va fi modificat doar daca il va intrece pe cel anterior. Continuati?");
+                ButtonType okButton = new ButtonType("Da", ButtonBar.ButtonData.YES);
+                ButtonType noButton = new ButtonType("Nu", ButtonBar.ButtonData.NO);
+                alert.getButtonTypes().setAll(okButton, noButton);
+                alert.showAndWait().ifPresent(type -> {
+                    if (type == okButton) {
+                        Parent playViewParent = null;
+                        try {
+                            playViewParent = FXMLLoader.load(getClass().getResource("welcome.fxml"));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        Scene playScene = new Scene(playViewParent);
+                        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                        window.setScene(playScene);
+                        window.show();
+                    }
+                });
+            } else{
+                dbController.insertNewPlayer(playersName);
+                Parent playViewParent = FXMLLoader.load(getClass().getResource("welcome.fxml"));
+                Scene playScene = new Scene(playViewParent);
+                Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                window.setScene(playScene);
+                window.show();
+            }
+
         }
 
     }
