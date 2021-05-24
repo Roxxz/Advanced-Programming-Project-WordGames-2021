@@ -20,7 +20,6 @@ acvatine
 acvatinei
 acvatinele
 acvatinelor
-ADN
 adolescentism
 adolescentismul
 adolescentismului
@@ -219,9 +218,6 @@ chinesteziilor
 chiproviceni
 chiprovicenii
 chiprovicenilor
-Chiproviceni
-Chiprovicenii
-Chiprovicenilor
 chirurgiile
 chirurgiilor
 clausus
@@ -306,9 +302,6 @@ finanțistelor
 fortuna
 fortune
 fortunei
-Fortuna
-Fortune
-Fortunei
 gaiza
 gaiză
 gaizei
@@ -349,10 +342,6 @@ gestapo
 gestapou
 gestapoul
 gestapoului
-Gestapo
-Gestapou
-Gestapoul
-Gestapoului
 ghioturi
 ghioturii
 ghircile
@@ -476,9 +465,6 @@ gustarului
 hades
 hadesul
 hadesului
-Hades
-Hadesul
-Hadesului
 hagiografiile
 hagiografiilor
 hagiologiile
@@ -21071,7 +21057,6 @@ oxaliferii
 oxaliferilor
 oxaliferul
 oxaliferului
-Oxalis
 oxalo
 oxaloza
 oxaloză
@@ -21373,7 +21358,6 @@ quipului
 quotient
 quotientul
 quotientului
-Rh
 russes
 săracan
 săracani
@@ -21415,7 +21399,6 @@ semiconsonanticilor
 semiconsonanticul
 semiconsonanticului
 sequoia
-Sequoia
 sexism
 sexismul
 sexismului
