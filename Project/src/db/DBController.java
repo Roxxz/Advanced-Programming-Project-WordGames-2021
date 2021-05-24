@@ -7,10 +7,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.*;
+
+import static controllers.ScoresController.scoresList;
 
 public class DBController {
     protected Connection connection = null;
@@ -82,11 +83,15 @@ public class DBController {
 
     public void updateHighScore(String name, int score){
         try {
-            String query = "update highscores set highscore = (?) where user_name = (?);";
+            String query = "update highscores set highscore = (?), date = (?) where user_name = (?);";
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH-mm-ss");
+            Date date = new Date();
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, score);
-            preparedStatement.setString(2, name);
+            preparedStatement.setString(2, String.valueOf(dateFormat.format(date)));
+            preparedStatement.setString(3, name);
             preparedStatement.executeUpdate();
             connection.commit();
         } catch (SQLException exception) {
