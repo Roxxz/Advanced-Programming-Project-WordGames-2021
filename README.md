@@ -1,6 +1,6 @@
 # PA-Project-WordGames-
 
-**Specificatii:**
+## Specificatii:
 
 -Crearea unor servicii pentru implementarea unor jocuri cu cuvinte (Scrabble sau altele) pentru limba română
 
@@ -8,13 +8,13 @@
 
 -Implementarea unui joc care foloseste aceste servicii cu interfata JavaFX
 
-**Membrii echipei:**
+## Membrii echipei:
 
 *Benchea Laura Malina*
 
 *Portase Roxana Nicoleta*
 
-***Ce am realizat?***
+## Ce am realizat?
 
   Am implementat un joc clasic de "Spanzuratoarea" cu urmatoarele specificatii:
   **Baza de date**
@@ -31,4 +31,3 @@
     **Dictionare**
     1. prin intermediul librariei jsoup, am gestionat dictionarul https://www.dexonline.ro/, pentru optiunea jucatorului de a cere definitia unui cuvant(care va costa 10 puncte);
     2. am gestionat dictionarul online de sinonime https://www.dictionardesinonime.ro/, pentru optiunea de a cere un sinonim (15 puncte).
-    
