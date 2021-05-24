@@ -26,6 +26,7 @@ import java.util.ResourceBundle;
 
 import static game.Game.*;
 import static controllers.NameController.playersName;
+import static controllers.ChooseGameController.typeOfGame;
 import static controllers.ScoresController.*;
 
 public class PlayController implements Initializable  {
@@ -175,6 +176,16 @@ public class PlayController implements Initializable  {
 
     private void setScore(int points){
         this.score = this.getScore() + points;
+        switch(typeOfGame){
+            case 2:
+                this.score = this.getScore() + 1;
+                break;
+            case 3:
+                this.score = this.getScore() + 3;
+                break;
+            default:
+                break;
+        }
         idScore.setText(String.valueOf(this.getScore()));
     }
 
