@@ -84,11 +84,11 @@
                         <Font name="Bookman Old Style" size="18.0" />
                     </font>
                 </Label>
-                <Button id="idDefButton" fx:id="idGetDef" mnemonicParsing="false" onMouseClicked="#getDefButtonClicked" prefHeight="30.0" prefWidth="63.0" text="Definitie 10$">
+                <Button id="idDefButton" fx:id="idGetDef" mnemonicParsing="false" onAction="#getDefButtonClicked" prefHeight="30.0" prefWidth="63.0" text="Definitie 10$">
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin></Button>
-                <Button id="idSynButton" fx:id="idGetSyn" mnemonicParsing="false" onMouseClicked="#getSynButtonClicked" prefHeight="38.0" prefWidth="194.0" stylesheets="@StyleSheet.css" text="Sinonime 15$">
+                <Button id="idSynButton" fx:id="idGetSyn" mnemonicParsing="false" onAction="#getSynButtonClicked"  prefHeight="38.0" prefWidth="194.0" stylesheets="@StyleSheet.css" text="Sinonime 15$">
                     <HBox.margin>
                         <Insets top="5.0" />
                     </HBox.margin></Button>
@@ -108,8 +108,8 @@
         </VBox>
         <HBox layoutX="607.0" layoutY="628.0" prefHeight="50.0" prefWidth="278.0" spacing="30.0" stylesheets="@StyleSheet.css">
             <children>
-                <Button fx:id="idNextBtn" mnemonicParsing="false" onAction="#nextButtonClicked" onMouseClicked="#nextButtonClicked" prefHeight="30.0" prefWidth="73.0" text="Înainte" />
-                <Button fx:id="idGoBackBtn" mnemonicParsing="false" onMouseClicked="#goBackButtonClicked" prefHeight="45.0" prefWidth="73.0" text="Înapoi" />
+                <Button fx:id="idNextBtn" mnemonicParsing="false" onAction="#nextButtonClicked" prefHeight="30.0" prefWidth="73.0" text="Înainte" />
+                <Button fx:id="idGoBackBtn" mnemonicParsing="false" onAction="#goBackButtonClicked" prefHeight="45.0" prefWidth="73.0" text="Înapoi" />
             </children>
         </HBox>
     </children>
