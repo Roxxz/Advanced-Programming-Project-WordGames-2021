@@ -64,8 +64,6 @@ public class Game {
         String missingChars = "";
         for (char c : randomWord.toCharArray()) {
             if (!wrongLetters.contains(c)) {
-                missingChars += " ";
-            }else{
                 missingChars += c + " ";
 
             }
