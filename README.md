@@ -1,5 +1,5 @@
 # PA-Project-WordGames-
-# ComputerScience, Al.I.Cuza Univeristy
+# Computer Science, Al.I.Cuza Univeristy
 
 ## Specifications:
 
