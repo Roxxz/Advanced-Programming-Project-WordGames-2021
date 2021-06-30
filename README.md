@@ -41,7 +41,7 @@
    
     1. This button shows the player a podium displaying the top 3 best players retrieved from the database depending on the score;
     
-    **Dictionaries**
+   **Dictionaries**
     
     1. using jsoup library, we managed the https://www.dexonline.ro/ dictionary, in order to show the player the definition of a word in case he chooses it(which will cost him 10 points);
     
@@ -90,7 +90,7 @@
    
     1. Acest buton duce jucatorul pe o noua pagina, in care se vor vedea top 3 cei mai buni jucatori, luati din baza de date in functie de scor;
     
-    **Dictionare**
+   **Dictionare**
     
     1. prin intermediul librariei jsoup, am gestionat dictionarul https://www.dexonline.ro/, pentru optiunea jucatorului de a cere definitia unui cuvant(care va costa 10 puncte);
     
